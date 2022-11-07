@@ -21,7 +21,7 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 "PLUGINS
 call plug#begin('~/AppData/Local/nvim/plugged')
 " sneak
-Plug 'justinmk/vim-sneak'
+"Plug 'justinmk/vim-sneak'
 Plug 'rickhowe/diffchar.vim'
 " AUTOCOMPLETE
 " source ~/AppData/Local/nvim/init.coc.vim
@@ -33,8 +33,27 @@ Plug 'tpope/vim-surround'
 Plug 'ThePrimeagen/vim-be-good'
 
 "AUTO BRACKETS FOR IF
-:call setreg("f", 'A{}O','c')
+:call setreg("f", "A{\n}O")
 nmap <M-f> @f
+
+:function Easymotion()
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+:endfunction
 
 "JUMP NAVIGATION
 if exists('g:vscode')
@@ -45,10 +64,14 @@ if exists('g:vscode')
   omap gc  <Plug>VSCodeCommentary
   nmap gcc <Plug>VSCodeCommentaryLine
   call plug#end()
+
+  :call Easymotion()
   finish
 else
   Plug 'easymotion/vim-easymotion'
+  :call Easymotion()
 endif
+
 
 "FUZZY FINDER
 Plug 'ctrlpvim/ctrlp.vim'
