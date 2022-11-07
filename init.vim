@@ -23,9 +23,6 @@ call plug#begin('~/AppData/Local/nvim/plugged')
 " sneak
 "Plug 'justinmk/vim-sneak'
 Plug 'rickhowe/diffchar.vim'
-" AUTOCOMPLETE
-" source ~/AppData/Local/nvim/init.coc.vim
-Plug 'neovim/nvim-lspconfig'  
 
 "SURROUND
 Plug 'tpope/vim-surround'
@@ -101,4 +98,4 @@ nmap <M-o> :TagbarToggle<CR>
 Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
-:colorscheme papercolor
+:colorscheme OceanicNext
