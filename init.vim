@@ -29,6 +29,8 @@ Plug 'tpope/vim-surround'
 
 Plug 'ThePrimeagen/vim-be-good'
 
+Plug 'junegunn/vim-slash'
+
 "AUTO BRACKETS FOR IF
 :call setreg("f", "A{\n}O")
 nmap <M-f> @f
