@@ -19,7 +19,7 @@
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 "PLUGINS
-call plug#begin('~/AppData/Local/nvim/plugged')
+call plug#begin()
 " sneak
 "Plug 'justinmk/vim-sneak'
 Plug 'rickhowe/diffchar.vim'
