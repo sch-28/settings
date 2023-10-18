@@ -31,6 +31,8 @@ Plug 'ThePrimeagen/vim-be-good'
 
 Plug 'junegunn/vim-slash'
 
+Plug 'mg979/vim-visual-multi'
+
 "AUTO BRACKETS FOR IF
 :call setreg("f", "A{\n}O")
 nmap <M-f> @f
