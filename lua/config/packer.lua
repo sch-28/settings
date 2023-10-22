@@ -52,13 +52,13 @@ return require('packer').startup(function(use)
             require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
         end
     }
-    use('tpope/vim-commentary')
+    -- use('tpope/vim-commentary')
     use('nvim-tree/nvim-web-devicons')
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
-    use{
+    use {
         'windwp/nvim-ts-autotag',
         config = function()
             require('nvim-ts-autotag').setup()
@@ -71,4 +71,14 @@ return require('packer').startup(function(use)
     use('jose-elias-alvarez/null-ls.nvim')
     use('MunifTanjim/prettier.nvim')
     use('nvim-treesitter/nvim-treesitter-context')
+    use('rbong/vim-flog')
+    use('JoosepAlviste/nvim-ts-context-commentstring')
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup({
+                pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+            })
+        end
+    }
 end)
