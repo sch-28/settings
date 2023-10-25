@@ -51,6 +51,20 @@ vim.keymap.set("n", "<leader>l", "iconsole.log(<C-r>=expand('<cword>')<CR>)<Esc>
 -- vim.keymap.set("n", "<C-1>", "<C-^>")
 --this doesnt work instead:
 vim.cmd([[
-nnoremap <leader>b <C-^>
 ]])
 
+
+-- Commands explained:
+-- :t''<CR> - copy current line to new line below
+-- :T''<CR> - copy current line to new line above
+-- :m''<CR> - move current line to new line below
+-- :M''<CR> - move current line to new line above
+-- :d<CR>`` - delete current line and return to original cursor position
+
+vim.cmd([[
+cnoremap $t <CR>:t''<CR>
+cnoremap $T <CR>:T''<CR>
+cnoremap $m <CR>:m''<CR>
+cnoremap $M <CR>:M''<CR>
+cnoremap $d <CR>:d<CR>``
+]])
