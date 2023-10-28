@@ -21,9 +21,14 @@ vim.keymap.set("n", "Q", "<nop>")
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>l", "iconsole.log(<C-r>=expand('<cword>')<CR>)<Esc>F(a")
-vim.keymap.set("n", "<leader>m", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>n", "<cmd>lprev<CR>zz")
-vim.keymap.set("n", "<leader>c", "<cmd>lclose<CR>zz")
+-- vim.keymap.set("n", "<leader>m", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>n", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "<leader>c", "<cmd>lclose<CR><cmd>cclose<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<leader>K", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "<leader>J", "<cmd>lnext<CR>zz")
+
 
 vim.keymap.set("n", "<leader>gh", "<cmd>0GlLog<CR>")
 

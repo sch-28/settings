@@ -77,4 +77,5 @@ return require('packer').startup(function(use)
     }
     use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
     use('justinmk/vim-sneak')
+    use { 'folke/trouble.nvim', requires = "kyazdani42/nvim-web-devicons", config = function() require("trouble").setup {} end }
 end)

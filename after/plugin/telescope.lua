@@ -1,5 +1,16 @@
 local builtin = require('telescope.builtin')
-
+require('telescope').setup({
+    defaults = {
+        -- set path display to truncate 3
+        path_display  = { truncate = 3 },
+        layout_config = {
+            horizontal = { width = 0.95, preview_width = 0.35, prompt_position = "bottom" },
+            -- other layout configuration here
+        },
+        -- other defaults configuration here
+    },
+    -- other configuration values here
+})
 -- require('config.telescopePickers').prettyGrepPicker({ file_picker = 'live_grep' })
 -- require('config.telescopePickers').prettyGrepPicker({ file_picker = 'grep_string' })
 -- require('config.telescopePickers').prettyFilesPicker({ file_picker = 'git_files' })
@@ -11,7 +22,7 @@ local grep_picker = require('config.telescopePickers').prettyGrepPicker
 
 -- builtin.grep_string({ search = vim.fn.input("Grep > ") });
 vim.keymap.set('n', '<leader>pf', function() file_picker({ picker = "find_files" }) end, {})
-vim.keymap.set('n', '<C-p>', function() file_picker({ picker = "git_files" }) end, {})
+vim.keymap.set('n', '<C-p>', function() builtin.git_files() end, {})
 vim.keymap.set('n', '<leader>ps', function()
     grep_picker({ picker = "grep_string", options = { search = vim.fn.input("Grep > ") } });
 end)
@@ -20,5 +31,8 @@ vim.keymap.set('n', '<leader>pd', function()
     grep_picker({ picker = "grep_string", options = { search = selected_word } })
 end)
 vim.keymap.set('n', '<Leader>fs', function() builtin.current_buffer_fuzzy_find() end)
-vim.keymap.set('n', '<Leader>pe', function() builtin.diagnostics({ severity = vim.lsp.protocol.DiagnosticSeverity.Error }) end)
-vim.keymap.set('n', '<Leader>fe', function() builtin.diagnostics({bufnr=0, severity = vim.lsp.protocol.DiagnosticSeverity.Error }) end)
+vim.keymap.set('n', '<Leader>pe',
+    function() builtin.diagnostics({ initial_mode = "normal", severity = vim.lsp.protocol.DiagnosticSeverity.Error }) end)
+vim.keymap.set('n', '<Leader>fe',
+    function() builtin.diagnostics({ initial_mode = "normal", bufnr = 0,
+            severity = vim.lsp.protocol.DiagnosticSeverity.Error }) end)
