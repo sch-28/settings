@@ -51,3 +51,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
 })
 
 vim.g.user_emmet_leader_key = "<C-z>"
+
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+

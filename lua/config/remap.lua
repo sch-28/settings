@@ -51,7 +51,6 @@ nmap <M-d> @o]])
 
 vim.keymap.set("n", "<leader>l", "iconsole.log(<C-r>=expand('<cword>')<CR>)<Esc>F(a")
 
---
 
 -- vim.keymap.set("n", "<C-1>", "<C-^>")
 --this doesnt work instead:
