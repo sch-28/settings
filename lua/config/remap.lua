@@ -72,3 +72,5 @@ cnoremap $m <CR>:m''<CR>
 cnoremap $M <CR>:M''<CR>
 cnoremap $d <CR>:d<CR>``
 ]])
+
+vim.keymap.set("n", "<leader>r", "<cmd>%bd|e#<cr>", {desc="Close all buffers but the current one"})

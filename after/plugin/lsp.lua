@@ -1,5 +1,12 @@
 local lsp_zero = require('lsp-zero')
 local util = require 'lspconfig.util'
+require("typescript-tools").setup {
+    on_init = function(client)
+        -- disable formatting capabilities
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentFormattingRangeProvider = false
+    end,
+}
 -- lsp_zero.preset("recommended")
 
 lsp_zero.on_attach(function(client, bufnr)
@@ -24,15 +31,15 @@ end)
 
 require("neodev").setup({})
 require('mason').setup({})
-require("lspconfig").tsserver.setup({
-    single_file_support = false,
-    root_dir = util.root_pattern('.git'),
-    on_init = function(client)
-        -- disable formatting capabilities
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentFormattingRangeProvider = false
-    end,
-})
+-- require("lspconfig").tsserver.setup({
+--     single_file_support = false,
+--     root_dir = util.root_pattern('.git'),
+--     on_init = function(client)
+--         -- disable formatting capabilities
+--         client.server_capabilities.documentFormattingProvider = false
+--         client.server_capabilities.documentFormattingRangeProvider = false
+--     end,
+-- })
 require('mason-lspconfig').setup({
     ensure_installed = { "svelte", "lua_ls" },
     lua_ls = function()
