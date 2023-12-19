@@ -74,3 +74,8 @@ cnoremap $d <CR>:d<CR>``
 ]])
 
 vim.keymap.set("n", "<leader>r", "<cmd>%bd|e#<cr>", {desc="Close all buffers but the current one"})
+
+-- toggle wordwrap keybind on leader w
+vim.keymap.set("n", "<leader>w", function()
+    vim.wo.wrap = not vim.wo.wrap
+end)
