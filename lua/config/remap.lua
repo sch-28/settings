@@ -24,6 +24,9 @@ vim.keymap.set("n", "<leader>l", "iconsole.log(<C-r>=expand('<cword>')<CR>)<Esc>
 -- vim.keymap.set("n", "<leader>m", "<cmd>lnext<CR>zz")
 -- vim.keymap.set("n", "<leader>n", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>c", "<cmd>lclose<CR><cmd>cclose<CR>zz")
+vim.keymap.set("n", "<leader>q", "<cmd>copen<CR>zz")
+vim.keymap.set("n", "<leader>Q", "<cmd>cclose<CR>zz")
+
 vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<leader>K", "<cmd>lprev<CR>zz")
@@ -44,7 +47,7 @@ end)
 
 
 
-vim.keymap.set({ "n", "i" }, "<C-s>", "<ESC>:Prettier<CR>:w<CR>")
+vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<ESC>:Prettier<CR>:w<CR>:NeomakeProject<CR>")
 
 vim.cmd([[:call setreg("o", "F\"vf\"S{wvf\"S(iclsxwa{},bla")
 nmap <M-d> @o]])
