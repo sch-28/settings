@@ -1,5 +1,5 @@
 -- keybdind to dismiss github copilot suggestion
-vim.api.nvim_set_keymap('i', '<C-r>', '<Plug>(copilot-dismiss)', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-w>', '<Plug>(copilot-dismiss)', { noremap = true, silent = true })
 -- map accect to  C-j
 vim.cmd([[
         imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")

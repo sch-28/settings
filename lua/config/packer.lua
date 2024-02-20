@@ -8,6 +8,12 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+    use {
+        "tversteeg/registers.nvim",
+        config = function()
+            require("registers").setup()
+        end,
+    }
 
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
@@ -90,4 +96,15 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
+    use {
+    "dustinblackman/oatmeal.nvim",
+    config = function()
+        require("oatmeal").setup({
+            backend = "ollama",
+            model = "codellama:latest",
+        })
+    end
+}
+    use('nvim-pack/nvim-spectre')
+    
 end)

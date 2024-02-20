@@ -7,8 +7,12 @@ require("typescript-tools").setup {
         client.server_capabilities.documentFormattingRangeProvider = false
     end,
 }
--- lsp_zero.preset("recommended")
 
+--update lsp in insert mode
+vim.diagnostic.config({
+    update_in_insert = true,
+})
+-- lsp_zero.preset("recommended")
 lsp_zero.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
     -- to learn the available actions

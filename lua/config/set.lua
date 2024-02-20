@@ -10,11 +10,11 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
-vim.api.nvim_exec("language en_US", true)
+-- vim.api.nvim_exec("language en_US", true)
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = "D:/Dev/.nvim-undo"
+vim.opt.undodir = vim.fn.expand('~/.vim/undodir')
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -44,14 +44,17 @@ vim.cmd.colorscheme("nightfox")
 
 
 -- autoread file on change
-vim.o.autoread = true
-vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
-  command = "if mode() != 'c' | checktime | endif",
-  pattern = { "*" },
-})
+-- vim.o.autoread = true
+-- vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+--   command = "if mode() != 'c' | checktime | endif",
+--   pattern = { "*" },
+-- })
 
 vim.g.user_emmet_leader_key = "<C-z>"
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
+vim.cmd([[autocmd FileType * set formatoptions-=ro]])
+
+vim.opt.virtualedit = "all"
