@@ -17,8 +17,7 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
-        -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
+        requires = { { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-live-grep-args.nvim' } }
     }
 
     -- use({
@@ -29,7 +28,11 @@ return require('packer').startup(function(use)
     --     end
     -- })
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate', commit = "f861bc6148e7bc715f6a09bd34bb1f577b62a248" })
-    use('theprimeagen/harpoon')
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { { "nvim-lua/plenary.nvim" } }
+    }
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
 
@@ -97,14 +100,22 @@ return require('packer').startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
     use {
-    "dustinblackman/oatmeal.nvim",
-    config = function()
-        require("oatmeal").setup({
-            backend = "ollama",
-            model = "codellama:latest",
-        })
-    end
-}
+        "dustinblackman/oatmeal.nvim",
+        config = function()
+            require("oatmeal").setup({
+                backend = "ollama",
+                model = "codellama:latest",
+            })
+        end
+    }
     use('nvim-pack/nvim-spectre')
-    
+    use({
+        "stevearc/oil.nvim",
+        config = function()
+            require("oil").setup()
+        end,
+    })
+    use('mrjones2014/smart-splits.nvim')
+    -- use('OmniSharp/omnisharp-vim')
+    use('folke/which-key.nvim')
 end)

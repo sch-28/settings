@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- move text blocks w/ J/K
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -31,6 +31,11 @@ vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<leader>K", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>J", "<cmd>lnext<CR>zz")
+
+
+vim.keymap.set("n", "<Leader>ff", function()
+    vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+end, { buffer = bufnr, desc = "[lsp] format" })
 
 
 vim.keymap.set("n", "<leader>gh", "<cmd>0GlLog<CR>")
@@ -74,7 +79,7 @@ cnoremap $M <CR>:M''<CR>
 cnoremap $d <CR>:d<CR>``
 ]])
 
-vim.keymap.set("n", "<leader>r", "<cmd>%bd|e#<cr>", {desc="Close all buffers but the current one"})
+vim.keymap.set("n", "<leader>r", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" })
 
 -- toggle wordwrap keybind on leader w
 vim.keymap.set("n", "<leader>w", function()
@@ -94,3 +99,8 @@ vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual(
 vim.keymap.set('n', '<leader>sf', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
     desc = "Search on current file"
 })
+
+--  nnoremap <expr> j v:count ? 'j' : 'gj'
+-- nnoremap <expr> k v:count ? 'k' : 'gk'
+vim.keymap.set("n", "j", "v:count ? 'j' : 'gj'", { expr = true })
+vim.keymap.set("n", "k", "v:count ? 'k' : 'gk'", { expr = true })
