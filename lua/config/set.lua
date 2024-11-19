@@ -12,10 +12,9 @@ vim.opt.wrap = false
 vim.opt.linebreak = true
 
 -- vim.api.nvim_exec("language en_US", true)
-
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = vim.fn.expand('~/.vim/undodir')
+vim.opt.undodir = "/home/jan/.config/nvim/undodir"
 vim.opt.undofile = true
 
 vim.opt.ignorecase = true
@@ -85,10 +84,10 @@ vim.opt.virtualedit = "all"
 
 
 -- Set a red background for errors, removing any underline or undercurl
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', { bg = '#3c2c3c', fg = '#c94f6d', underline = true, undercurl = true })
+-- vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', { bg = '#3c2c3c', fg = '#c94f6d', underline = true, undercurl = true })
 
 -- Optional: Set similar styles for other diagnostics (warnings, hints, etc.)
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { bg = '#ff8800', fg = 'black', underline = false, undercurl = false })
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', { bg = '#4444ff', fg = 'white', underline = false, undercurl = false })
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineInfo', { bg = '#00ff00', fg = 'black', underline = false, undercurl = false })
+-- vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { bg = '#ff8800', fg = 'black', underline = false, undercurl = false })
+-- vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', { bg = '#4444ff', fg = 'white', underline = false, undercurl = false })
+-- vim.api.nvim_set_hl(0, 'DiagnosticUnderlineInfo', { bg = '#00ff00', fg = 'black', underline = false, undercurl = false })
 

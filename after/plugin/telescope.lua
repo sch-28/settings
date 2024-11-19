@@ -26,6 +26,9 @@ vim.keymap.set('n', '<C-p>', function() builtin.git_files() end, {})
 vim.keymap.set('n', '<leader>ps', function()
     grep_picker({ picker = "grep_string", options = { search = vim.fn.input("Grep > ") } });
 end)
+vim.keymap.set('n', '<leader>pl', function()
+    grep_picker({ picker = "live_grep"});
+end)
 vim.keymap.set('n', '<leader>pd', function()
     local selected_word = vim.fn.expand("<cword>")
     grep_picker({ picker = "grep_string", options = { search = selected_word } })

@@ -45,7 +45,7 @@ require('mason').setup({})
 --     end,
 -- })
 require('mason-lspconfig').setup({
-    ensure_installed = { "svelte", "lua_ls" },
+    ensure_installed = { "svelte", "lua_ls", "tailwindcss"},
     lua_ls = function()
         require("lspconfig").lua_ls.setup({
             settings = {
@@ -60,4 +60,13 @@ require('mason-lspconfig').setup({
     handlers = {
         lsp_zero.default_setup,
     },
+})
+
+
+require("lspconfig").tailwindcss.setup({
+    settings = {
+        tailwindCSS = {
+            classAttributes = { "class", "className", "class:list", "classList", "ngClass", "tw" },
+        }
+    }
 })

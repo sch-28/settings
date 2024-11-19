@@ -54,7 +54,6 @@ return require('packer').startup(function(use)
     use('folke/neodev.nvim')
     -- use('prettier/vim-prettier', { run = 'npm i --frozen-lockfile --production' })
 
-    use('tpope/vim-surround')
     -- use('tpope/vim-commentary')
     use('nvim-tree/nvim-web-devicons')
     use {
@@ -117,5 +116,13 @@ return require('packer').startup(function(use)
     })
     use('mrjones2014/smart-splits.nvim')
     -- use('OmniSharp/omnisharp-vim')
-    use('folke/which-key.nvim')
+    -- use('folke/which-key.nvim')
+    use('norcalli/nvim-colorizer.lua')
+    use('echasnovski/mini.hipatterns')
+
+    use({
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    })
+    use { "chrisgrieser/nvim-spider" }
 end)

@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>pv", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- move text blocks w/ J/K
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -32,6 +34,25 @@ vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<leader>K", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>J", "<cmd>lnext<CR>zz")
 
+-- spider movement
+vim.keymap.set(
+    { "n", "o", "x" },
+    "<M-w>",
+    "<cmd>lua require('spider').motion('w')<CR>",
+    { desc = "Spider-w" }
+)
+vim.keymap.set(
+    { "n", "o", "x" },
+    "<M-e>",
+    "<cmd>lua require('spider').motion('e')<CR>",
+    { desc = "Spider-e" }
+)
+vim.keymap.set(
+    { "n", "o", "x" },
+    "<M-b>",
+    "<cmd>lua require('spider').motion('b')<CR>",
+    { desc = "Spider-b" }
+)
 
 vim.keymap.set("n", "<Leader>ff", function()
     vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
@@ -50,7 +71,8 @@ end)
 -- vim.keymap.set({ "i" }, "<C-x>", "<C-v>", { noremap = true, silent = true })
 
 
-vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<ESC>:Prettier<CR>:w<CR>")
+-- vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<ESC>:Prettier<CR>:w<CR>")
+ vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<ESC>:Prettier<CR>:w<CR>:NeomakeProject<CR>")
 
 vim.cmd([[:call setreg("o", "F\"vf\"S{wvf\"S(iclsxwa{},bla")
 nmap <M-d> @o]])
