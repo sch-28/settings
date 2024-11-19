@@ -6,9 +6,11 @@ local async = event == "BufWritePost"
 
 null_ls.setup({
   on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-      vim.keymap.set("n", "<Leader>f", function()
+    -- if client.supports_method("textDocument/formatting") then
+      vim.keymap.set("n", "<Leader>ab", function()
         vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+
+           print("format on save")
       end, { buffer = bufnr, desc = "[lsp] format" })
 
       -- format on save
@@ -18,10 +20,13 @@ null_ls.setup({
         group = group,
         callback = function()
           vim.lsp.buf.format({ bufnr = bufnr, async = async })
+           print("format on save")
+           
+
         end,
         desc = "[lsp] format on save",
       })
-    end
+    -- end
 
     if client.supports_method("textDocument/rangeFormatting") then
       vim.keymap.set("x", "<Leader>f", function()

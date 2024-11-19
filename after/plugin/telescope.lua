@@ -2,6 +2,7 @@ local builtin = require('telescope.builtin')
 require('telescope').setup({
     defaults = {
         -- set path display to truncate 3
+        file_ignore_patterns = { "node_modules", ".git" },
         path_display  = { truncate = 3 },
         layout_config = {
             horizontal = { width = 0.95, preview_width = 0.35, prompt_position = "bottom" },
@@ -11,6 +12,12 @@ require('telescope').setup({
     },
     -- other configuration values here
 })
+
+
+-- builtin.load_extension('live_grep_args')
+
+require("telescope").load_extension("live_grep_args")
+
 -- require('config.telescopePickers').prettyGrepPicker({ file_picker = 'live_grep' })
 -- require('config.telescopePickers').prettyGrepPicker({ file_picker = 'grep_string' })
 -- require('config.telescopePickers').prettyFilesPicker({ file_picker = 'git_files' })
