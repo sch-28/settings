@@ -12,6 +12,8 @@ vim.opt.wrap = false
 vim.opt.linebreak = true
 
 -- vim.api.nvim_exec("language en_US", true)
+--set local spellchecking to en
+vim.opt.spelllang = "en_us"
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = "/home/jan/.config/nvim/undodir"

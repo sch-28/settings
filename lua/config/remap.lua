@@ -71,8 +71,8 @@ end)
 -- vim.keymap.set({ "i" }, "<C-x>", "<C-v>", { noremap = true, silent = true })
 
 
--- vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<ESC>:Prettier<CR>:w<CR>")
- vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<ESC>:Prettier<CR>:w<CR>:NeomakeProject<CR>")
+vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<ESC>:Prettier<CR>:w<CR>")
+ -- vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<ESC>:Prettier<CR>:w<CR>:NeomakeProject<CR>")
 
 vim.cmd([[:call setreg("o", "F\"vf\"S{wvf\"S(iclsxwa{},bla")
 nmap <M-d> @o]])

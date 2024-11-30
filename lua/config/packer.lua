@@ -124,5 +124,15 @@ return require('packer').startup(function(use)
         "kylechui/nvim-surround",
         tag = "*", -- Use for stability; omit to use `main` branch for the latest features
     })
+    use { "ibhagwan/fzf-lua",
+        -- optional for icon support
+        requires = { "nvim-tree/nvim-web-devicons" }
+        -- or if using mini.icons/mini.nvim
+        -- requires = { "echasnovski/mini.icons" }
+    }
     use { "chrisgrieser/nvim-spider" }
+    use({
+        'Wansmer/treesj',
+        requires = { 'nvim-treesitter/nvim-treesitter' }, 
+    })
 end)
