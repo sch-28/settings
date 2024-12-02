@@ -27,7 +27,8 @@ return require('packer').startup(function(use)
     --         vim.cmd('colorscheme rose-pine')
     --     end
     -- })
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate', commit = "f861bc6148e7bc715f6a09bd34bb1f577b62a248" })
+    -- use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate', commit = "f861bc6148e7bc715f6a09bd34bb1f577b62a248" })
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",

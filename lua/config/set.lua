@@ -86,10 +86,13 @@ vim.opt.virtualedit = "all"
 
 
 -- Set a red background for errors, removing any underline or undercurl
--- vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', { bg = '#3c2c3c', fg = '#c94f6d', underline = true, undercurl = true })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', { bg = '#3c2c3c', fg = '#c94f6d', underline = true, undercurl = true })
 
 -- Optional: Set similar styles for other diagnostics (warnings, hints, etc.)
--- vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { bg = '#ff8800', fg = 'black', underline = false, undercurl = false })
--- vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', { bg = '#4444ff', fg = 'white', underline = false, undercurl = false })
--- vim.api.nvim_set_hl(0, 'DiagnosticUnderlineInfo', { bg = '#00ff00', fg = 'black', underline = false, undercurl = false })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { bg = '#ff8800', fg = 'black', underline = false, undercurl = false })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', { bg = '#4444ff', fg = 'white', underline = false, undercurl = false })
+vim.api.nvim_set_hl(0, 'DiagnosticUnderlineInfo', { bg = '#00ff00', fg = 'black', underline = false, undercurl = false })
 
+vim.opt.cursorcolumn = false
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
