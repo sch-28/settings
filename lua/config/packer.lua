@@ -134,6 +134,11 @@ return require('packer').startup(function(use)
     use { "chrisgrieser/nvim-spider" }
     use({
         'Wansmer/treesj',
-        requires = { 'nvim-treesitter/nvim-treesitter' }, 
+        requires = { 'nvim-treesitter/nvim-treesitter' },
+    })
+    --set build false
+    use({
+        "3rd/image.nvim",
+        build = false,
     })
 end)
