@@ -126,3 +126,6 @@ vim.keymap.set('n', '<leader>sf', '<cmd>lua require("spectre").open_file_search(
 -- nnoremap <expr> k v:count ? 'k' : 'gk'
 vim.keymap.set("n", "j", "v:count ? 'j' : 'gj'", { expr = true })
 vim.keymap.set("n", "k", "v:count ? 'k' : 'gk'", { expr = true })
+
+vim.keymap.set("n", "<leader>e", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<leader>E", vim.diagnostic.goto_prev)

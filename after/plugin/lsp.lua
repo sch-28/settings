@@ -85,8 +85,15 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
     -- automatically select the code action that contains the word "Import"
     vim.keymap.set("n", "<leader>i",
-        function() vim.lsp.buf.code_action({ apply = true, filter = function(action) return action.title:find("import") ~=
-                nil end }) end, opts)
+        function()
+            vim.lsp.buf.code_action({
+                apply = true,
+                filter = function(action)
+                    return action.title:find("import") ~=
+                        nil
+                end
+            })
+        end, opts)
 
     vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references({ includeDeclaration = false }) end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
