@@ -137,8 +137,8 @@ return require('packer').startup(function(use)
         requires = { 'nvim-treesitter/nvim-treesitter' },
     })
     --set build false
-    use({
-        "3rd/image.nvim",
-        build = false,
-    })
+    -- use({
+    --     "3rd/image.nvim",
+    --     build = false,
+    -- })
 end)
