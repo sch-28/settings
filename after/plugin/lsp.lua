@@ -37,7 +37,6 @@ tstools.setup {
         tsserver_max_memory = "auto",
         -- described below
         tsserver_format_options = {},
-        tsserver_file_preferences = {},
         -- locale of all tsserver messages, supported locales you can find here:
         -- https://github.com/microsoft/TypeScript/blob/3c221fc086be52b19801f6e8d82596d04607ede6/src/compiler/utilitiesPublic.ts#L620
         tsserver_locale = "en",
@@ -57,6 +56,11 @@ tstools.setup {
         jsx_close_tag = {
             enable = false,
             filetypes = { "javascriptreact", "typescriptreact" },
+        },
+        tsserver_file_preferences = {
+            includeCompletionsForModuleExports = false
+
+
         }
     },
 }
@@ -75,7 +79,9 @@ lsp_zero.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+    vim.keymap.set("n", "K", function() vim.lsp.buf.hover({
+        border = "rounded",
+    }) end, opts)
     vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end, opts)
     vim.keymap.set("n", "go", function() vim.lsp.buf.type_definition() end, opts)
     vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)

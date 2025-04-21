@@ -129,3 +129,10 @@ vim.keymap.set("n", "k", "v:count ? 'k' : 'gk'", { expr = true })
 
 vim.keymap.set("n", "<leader>e", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>E", vim.diagnostic.goto_prev)
+
+vim.keymap.set('s', '<S-j>', 'j', { noremap = true })
+vim.keymap.set('s', '<S-k>', 'k', { noremap = true })
+vim.keymap.set('s', '<S-h>', 'h', { noremap = true })
+vim.keymap.set('s', '<S-l>', 'l', { noremap = true })
+
+

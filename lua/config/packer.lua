@@ -71,7 +71,7 @@ return require('packer').startup(function(use)
     use('EdenEast/nightfox.nvim')
     use('f-person/git-blame.nvim')
 
-    use('jose-elias-alvarez/null-ls.nvim')
+    use('nvimtools/none-ls.nvim')
     use('MunifTanjim/prettier.nvim')
     use('nvim-treesitter/nvim-treesitter-context')
     use('rbong/vim-flog')
@@ -141,4 +141,29 @@ return require('packer').startup(function(use)
     --     "3rd/image.nvim",
     --     build = false,
     -- })
+    use({
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!:).
+        run = "make install_jsregexp"
+    })
+    use({
+        "hrsh7th/nvim-cmp",
+    })
+    use({
+        "hrsh7th/cmp-nvim-lsp",
+    })
+    use({
+        "hrsh7th/cmp-buffer",
+    })
+    use({
+        'saadparwaiz1/cmp_luasnip'
+    })
+    use({
+        "hrsh7th/cmp-path",
+    })
+    use({
+        "hrsh7th/cmp-cmdline",
+    })
 end)

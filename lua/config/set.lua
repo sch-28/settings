@@ -41,18 +41,18 @@ vim.opt.colorcolumn = ""
 vim.opt.clipboard = "unnamed,unnamedplus"
 
 if vim.fn.has("wsl") == 1 then
-  vim.g.clipboard = {
-    name = "win32yank-wsl",
-    copy = {
-      ["+"] = "win32yank.exe -i --crlf",
-      ["*"] = "win32yank.exe -i --crlf",
-    },
-    paste = {
-      ["+"] = "win32yank.exe -o --lf",
-      ["*"] = "win32yank.exe -o --lf",
-    },
-    cache_enabled = 0,
-  }
+    vim.g.clipboard = {
+        name = "win32yank-wsl",
+        copy = {
+            ["+"] = "win32yank.exe -i --crlf",
+            ["*"] = "win32yank.exe -i --crlf",
+        },
+        paste = {
+            ["+"] = "win32yank.exe -o --lf",
+            ["*"] = "win32yank.exe -o --lf",
+        },
+        cache_enabled = 0,
+    }
 end
 
 -- vim.cmd("colorscheme kanagawa-wave")
@@ -61,9 +61,24 @@ require("nightfox").setup({
         transparent = true,
     }
 })
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.opt.background = "dark"
+
+local set_hl_for_floating_window = function()
+  vim.api.nvim_set_hl(0, 'NormalFloat', {
+    link = 'Normal',
+  })
+  vim.api.nvim_set_hl(0, 'FloatBorder', {
+    bg = 'none',
+  })
+end
+
+set_hl_for_floating_window()
+vim.api.nvim_create_autocmd('ColorScheme', {
+  pattern = '*',
+  desc = 'Avoid overwritten by loading color schemes later',
+  callback = set_hl_for_floating_window,
+})
+
+-- vim.opt.background = "dark"
 vim.cmd.colorscheme("nightfox")
 
 
@@ -86,13 +101,19 @@ vim.opt.virtualedit = "all"
 
 
 -- Set a red background for errors, removing any underline or undercurl
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', { bg = '#3c2c3c', fg = '#c94f6d', underline = true, undercurl = true })
+-- vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', { bg = '#3c2c3c', fg = '#c94f6d', underline = true, undercurl = true })
 
 -- Optional: Set similar styles for other diagnostics (warnings, hints, etc.)
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { bg = '#ff8800', fg = 'black', underline = false, undercurl = false })
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', { bg = '#4444ff', fg = 'white', underline = false, undercurl = false })
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineInfo', { bg = '#00ff00', fg = 'black', underline = false, undercurl = false })
+-- vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { bg = '#ff8800', fg = 'black', underline = false, undercurl = false })
+-- vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', { bg = '#4444ff', fg = 'white', underline = false, undercurl = false })
+-- vim.api.nvim_set_hl(0, 'DiagnosticUnderlineInfo', { bg = '#00ff00', fg = 'black', underline = false, undercurl = false })
 
 vim.opt.cursorcolumn = false
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
+
+-- vim.lsp.enable({'clangd', 'gopls'})
+-- vim.diagnostic.config({ virtual_text = { current_line = true } })
+-- vim.o.winbl = 10
+-- vim.o.winblend = 10
+-- vim.api.nvim_set_hl(0, 'NormalFloat', {link = 'CmpItemMenu'})
