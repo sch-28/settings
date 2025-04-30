@@ -1,10 +1,24 @@
+
+local colors = {
+    bg       = '#202328',
+    fg       = '#bbc2cf',
+    yellow   = '#ECBE7B',
+    cyan     = '#008080',
+    darkblue = '#081633',
+    green    = '#98be65',
+    orange   = '#FF8800',
+    violet   = '#a9a1e1',
+    magenta  = '#c678dd',
+    blue     = '#51afef',
+    red      = '#ec5f67',
+}
 local function is_neomake_running()
     local jobs = vim.fn['neomake#GetJobs']()
     return jobs and #jobs > 0
 end
 
 
--- vim.api.nvim_set_hl(0, 'LualineRed', { fg = '#ff0000', bg = '#3C3836' })
+vim.api.nvim_set_hl(0, 'LualineRed', { fg = colors.red, bg = colors.bg })
 
 local function neomakeLoading()
     local frames = { '◐', '◓', '◑', '◒' }
@@ -17,21 +31,21 @@ local function neomakeLoading()
     if num_issues == 1 then
         local qflist = vim.fn.getqflist()
         if qflist[1].text:match('No targets specified') then
-            return ''
+            return 'ok'
         end
     end
 
     local status = vim.fn['neomake#statusline#get'](bufnr, {
         format_running = spinner,
-        format_loclist_ok = '✓', -- shown if clean (no issues)
-        format_quickfix_ok = '✓', -- unused, we rely on quickfix_issues
+        format_loclist_ok = 'ok', -- shown if clean (no issues)
+        format_quickfix_ok = 'ok', -- unused, we rely on quickfix_issues
         format_quickfix_issues = '%s',
         format_status = '%s',
         format_default = ""
     })
     if num_issues > 0 and not is_neomake_running() then
-        -- status = '%#LualineRed# ' .. num_issues -- display the issue count in red
-        status = ' ' .. num_issues -- display the issue count in red
+        status = '%#LualineRed# ' .. num_issues -- display the issue count in red
+        -- status = ' ' .. num_issues -- display the issue count in red
     end
 
 
@@ -56,22 +70,6 @@ local conditions = {
 }
 
 local lualine = require('lualine')
-
--- Color table for highlights
--- stylua: ignore
-local colors = {
-    bg       = '#202328',
-    fg       = '#bbc2cf',
-    yellow   = '#ECBE7B',
-    cyan     = '#008080',
-    darkblue = '#081633',
-    green    = '#98be65',
-    orange   = '#FF8800',
-    violet   = '#a9a1e1',
-    magenta  = '#c678dd',
-    blue     = '#51afef',
-    red      = '#ec5f67',
-}
 
 
 local config = {
@@ -155,7 +153,6 @@ ins_left {
 
 ins_left {
     neomakeLoading,
-    color = { fg = colors.red },
 }
 
 ins_left {
