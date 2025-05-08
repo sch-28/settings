@@ -43,15 +43,21 @@ local function neomakeLoading()
         format_status = '%s',
         format_default = ""
     })
-    if num_issues > 0 and not is_neomake_running() then
-        status = '%#LualineRed# ' .. num_issues -- display the issue count in red
-        -- status = ' ' .. num_issues -- display the issue count in red
-    end
+    -- if num_issues > 0 and not is_neomake_running() then
+    --     status = '%#LualineRed# ' .. num_issues -- display the issue count in red
+    --     -- status = ' ' .. num_issues -- display the issue count in red
+    -- end
 
 
     if status:sub(1, 2) == '? ' then
         status = status:sub(3)
     end
+
+    -- replace QE: with QF:
+    status = status:gsub('QE:', '')
+
+    --remove all bg colors
+    status = status:gsub('%%#.-# ', '%%#LualineRed# %%#LualineRed#')
 
     return status
 end
@@ -119,6 +125,7 @@ local config = {
                 "filename",
                 cond = conditions.buffer_not_empty,
                 color = { fg = colors.fg, gui = 'bold' },
+                path = 4,
             }
         },
         lualine_x = {},
@@ -158,6 +165,7 @@ ins_left {
 ins_left {
     'filename',
     cond = conditions.buffer_not_empty,
+    path = 4,
     color = { fg = colors.fg, gui = 'bold' },
 }
 

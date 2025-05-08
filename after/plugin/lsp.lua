@@ -1,5 +1,6 @@
 local lsp_zero = require('lsp-zero')
-local lsp_config =  require("lspconfig")
+local lsp_config = require("lspconfig")
+local mason_lspconfig = require("mason-lspconfig")
 -- local util = require 'lspconfig.util'
 -- require("typescript-tools").setup {
 --     on_init = function(client)
@@ -110,6 +111,7 @@ lsp_zero.on_attach(function(client, bufnr)
     -- lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
+
 require("neodev").setup({})
 require('mason').setup({})
 -- require("lspconfig").tsserver.setup({
@@ -121,23 +123,12 @@ require('mason').setup({})
 --         client.server_capabilities.documentFormattingRangeProvider = false
 --     end,
 -- })
-require('mason-lspconfig').setup({
+mason_lspconfig.setup({
     ensure_installed = { "svelte", "lua_ls", "tailwindcss" },
-    automatic_installation=  true,
-    lua_ls = function()
-        lsp_config.lua_ls.setup({
-            settings = {
-                Lua = {
-                    completion = {
-                        callSnippet = "Replace"
-                    }
-                },
-            }
-        })
-    end,
+    automatic_installation = true,
     handlers = {
         lsp_zero.default_setup,
-    },
+    }
 })
 
 
@@ -148,7 +139,54 @@ lsp_config.tailwindcss.setup({
         }
     }
 })
-lsp_config.vtsls.setup({
+-- lsp_config.vtsls.setup({
+--     settings = {
+--         typescript = {
+--             format = {
+--                 enable = false,
+--             }
+--         },
+--         tsserver = {
+--             maxTsServerMemory = 4096,
+--         },
+--     }
+-- })
+
+-- mason_lspconfig.setup_handlers({
+--     -- This is a default handler that will be called for each installed server (also for new servers that are installed during a session)
+--     function(server_name)
+--         lsp_config[server_name].setup {}
+--     end,
+--     -- You can also override the default handler for specific servers by providing them as keys, like so:
+--     ["vtsls"] = function()
+--         lsp_config.vtsls.setup({
+--             settings = {
+--                 typescript = {
+--                     format = {
+--                         enable = false,
+--                     }
+--                 },
+--                 tsserver = {
+--                     maxTsServerMemory = 4096,
+--                 },
+--             }
+--         })
+--     end,
+--     lua_ls = function()
+--         lsp_config.lua_ls.setup({
+--             settings = {
+--                 Lua = {
+--                     completion = {
+--                         callSnippet = "Replace"
+--                     }
+--                 },
+--             }
+--         })
+--     end,
+-- })
+
+
+vim.lsp.config('vtsls', {
     settings = {
         typescript = {
             format = {
@@ -157,6 +195,16 @@ lsp_config.vtsls.setup({
         },
         tsserver = {
             maxTsServerMemory = 4096,
+        },
+    }
+})
+
+vim.lsp.config('lua_ls', {
+    settings = {
+        Lua = {
+            completion = {
+                callSnippet = "Replace"
+            }
         },
     }
 })

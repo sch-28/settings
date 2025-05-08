@@ -37,12 +37,15 @@ return require('packer').startup(function(use)
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
 
+
+
+
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
         requires = {
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
+            { 'mason-org/mason.nvim' },
+            { 'mason-org/mason-lspconfig.nvim' },
 
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -71,8 +74,8 @@ return require('packer').startup(function(use)
     use('EdenEast/nightfox.nvim')
     use('f-person/git-blame.nvim')
 
-    -- use('nvimtools/none-ls.nvim')
-    use('ulisses-cruz/none-ls.nvim')
+    use('nvimtools/none-ls.nvim')
+    -- use('ulisses-cruz/none-ls.nvim')
     use('MunifTanjim/prettier.nvim')
     use('nvim-treesitter/nvim-treesitter-context')
     use('rbong/vim-flog')
@@ -167,4 +170,7 @@ return require('packer').startup(function(use)
     use({
         "hrsh7th/cmp-cmdline",
     })
+    -- use({
+    --     "HiPhish/rainbow-delimiters.nvim"
+    -- })
 end)

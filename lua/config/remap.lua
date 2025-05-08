@@ -136,3 +136,31 @@ vim.keymap.set('s', '<S-h>', 'h', { noremap = true })
 vim.keymap.set('s', '<S-l>', 'l', { noremap = true })
 
 
+
+local ts_utils = require("nvim-treesitter.ts_utils")
+
+function JumpToHtmlTagEnd()
+  local node = ts_utils.get_node_at_cursor()
+  if not node then return end
+
+  -- Climb to the parent tag node
+  while node do
+    local t = node:type()
+    print(t)
+    if t == "jsx_opening_element" or t == "jsx_closing_element" or t == "jsx_self_closing_element" then
+      break
+    end
+    node = node:parent()
+  end
+
+  if not node then
+    -- print("Not in an HTML tag")
+    return
+  end
+
+  -- Jump to end of node
+  local _, _, end_row, end_col = node:range()
+  vim.api.nvim_win_set_cursor(0, { end_row + 1, end_col })
+end
+
+vim.keymap.set('n', 't%', JumpToHtmlTagEnd, { desc = "Treesitter HTML tag jump" })
